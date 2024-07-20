@@ -7,6 +7,9 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import Provider from "./providers";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { SiteHeader } from "@/components/site-header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import Meteors from "@/components/magicui/meteors";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +24,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body className={inter.className}>
-        <Provider attribute="class" defaultTheme="system" enableSystem >
-          {children}
-          <ReactQueryDevtools initialIsOpen={false}/>
+        <Meteors/>
+        <Provider attribute="class" defaultTheme="dark" enableSystem >
+          <SiteHeader />
+          <div className="flex-1">
+            {children}
+          </div>
+          <TailwindIndicator />
+          <ReactQueryDevtools initialIsOpen={false} />
         </Provider>
       </body>
     </html>
