@@ -25,8 +25,8 @@ export interface DocsConfig {
 export const docsConfig: DocsConfig = {
   mainNav: [
     {
-      title: "Documentation",
-      href: "/docs",
+      title: "Nasa Gallery",
+      href: "/gallery",
     },
   ],
 }
