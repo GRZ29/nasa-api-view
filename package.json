@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf node_modules && rm -rf dist",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "deploy": "gh-pages -d out",
+    "export": "next build && next export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
