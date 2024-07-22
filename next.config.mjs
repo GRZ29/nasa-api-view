@@ -2,7 +2,7 @@
 let envImageUnoptimize = process.env.NODE_ENV !== "production" ? false : true
 const nextConfig = {
     output: "export",
-    // distDir: "dist",
+    distDir: "out",
     images:{
         unoptimized: envImageUnoptimize,
     }
