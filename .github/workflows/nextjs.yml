@@ -1,0 +1,38 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Set this to the branch you want to trigger the deploy from
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20'  # Make sure to use a compatible version of Node.js
+
+    - name: Install pnpm
+      run: |
+        npm install -g pnpm
+
+    - name: Install dependencies
+      run: |
+        pnpm install
+
+    - name: Build project
+      run: |
+        pnpm run build
+        pnpm run export
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./out
