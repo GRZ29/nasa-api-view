@@ -16,7 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: '16'  # Make sure to use a compatible version of Node.js
+        node-version: '20'  # Make sure to use a compatible version of Node.js
 
     - name: Install pnpm
       run: |
