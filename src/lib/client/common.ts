@@ -9,6 +9,10 @@ const commonHeaders: HeadersInit = {
 function getUrl(path: string, query?: Record<string, any>) {
   const params = query ? stringify(query) : null
 
+  if(path?.includes('https')){
+    return `${path}${params ? `?${params}` : ""}`
+  }
+
   return `${baseUrl}${path}${params ? `?${params}` : ""}`
 }
 

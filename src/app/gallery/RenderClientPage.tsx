@@ -1,6 +1,6 @@
 "use client"
 
-import { useApiNasaImages } from '@/hooks/nasa-api-images'
+import { useApiNasaImages, useApiNasaPictureDay } from '@/hooks/nasa-api-images'
 import React from 'react'
 import CardGallery from './CardGallery'
 import { zodResolver } from "@hookform/resolvers/zod"

@@ -28,5 +28,9 @@ export const docsConfig: DocsConfig = {
       title: "Nasa Gallery",
       href: "/gallery",
     },
+    {
+      title: "Day Picture",
+      href: "/picture",
+    },
   ],
 }
