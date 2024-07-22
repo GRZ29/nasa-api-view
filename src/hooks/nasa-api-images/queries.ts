@@ -7,15 +7,17 @@ const NASA_API_IMAGES = "nasa-api-images" as const;
 export const nasaApiImages = queryKeysFactory(NASA_API_IMAGES);
 
 export function useApiNasaImages(
-  query?: Record<string, unknown>,
+  query: string,
   options?: Omit<
     UseQueryOptions<ImagesData, Error, ImagesData, QueryKey>,
     "queryKey" | "queryFn"
   >
 ) {
+
   return useQuery({
-    queryKey: nasaApiImages.all,
-    queryFn: () => client.nasaData.listNasaImages(),
+    queryKey: nasaApiImages.list(query),
+    queryFn: () => client.nasaData.listNasaImages(query),
     ...options,
   });
 }
+

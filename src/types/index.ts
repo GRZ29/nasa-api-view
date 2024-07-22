@@ -1,19 +1,19 @@
 //this two types are for api general response
 export type ImagesData = {
-      collection: {
-        href: string;
-        items: ImageDataItem[];
-        links: {
-          href: string;
-          prompt: string;
-          rel: string;
-        }[];
-        metadata: {
-          total_hits: number;
-        };
-        version: string;
-      };
+  collection: {
+    href: string;
+    items: ImageDataItem[];
+    links: {
+      href: string;
+      prompt: string;
+      rel: string;
+    }[];
+    metadata: {
+      total_hits: number;
     };
+    version: string;
+  };
+};
 
 export interface ImageDataItem {
   data: {
@@ -33,17 +33,28 @@ export interface ImageDataItem {
 
 //indivual images data
 export type ImageItemData = {
+  href: string;
+  images: {
+    href: string;
+    items: {
       href: string;
-      images: {
-        href: string;
-        items: {
-          href: string;
-        }[];
-        version: string;
-      };
-      items: ImageDataItem[];
-      metadata: {
-        total_hits: number;
-      };
-      version: string;
-    };
+    }[];
+    version: string;
+  };
+  items: ImageDataItem[];
+  metadata: {
+    total_hits: number;
+  };
+  version: string;
+};
+
+export type PictureDay = {
+  date: string;
+  explanation: string;
+  hdurl: string;
+  media_type: string;
+  service_version: string;
+  title: string;
+  url: string;
+  copyright?: string;
+};
