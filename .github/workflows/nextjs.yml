@@ -36,7 +36,7 @@ jobs:
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 20
+          node-version: 16
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -66,12 +66,14 @@ jobs:
         uses: actions/configure-pages@v3
         with:
           static_site_generator: next
+
       - name: Build with Next.js
         run: pnpm next build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: dist
+          path: ./.next
 
   # Deployment job
   deploy:
