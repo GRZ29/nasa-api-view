@@ -1,9 +1,10 @@
 /** @type {import('next').NextConfig} */
+let envImageUnoptimize = process.env.NODE_ENV !== "production" ? false : true
 const nextConfig = {
-    output: "export",
+    output: process.env.NODE_ENV !== "production" ? undefined: "export",
     distDir: "dist",
     images:{
-        unoptimized: true,
+        unoptimized: envImageUnoptimize,
     }
 };
 
