@@ -11,7 +11,7 @@ import { SiteHeader } from "@/components/site-header";
 import { TailwindIndicator } from "@/components/tailwind-indicator";
 import Meteors from "@/components/magicui/meteors";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"] }); 
 
 export const metadata: Metadata = {
   title: "Create Next App",
