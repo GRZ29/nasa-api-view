@@ -58,12 +58,12 @@ jobs:
       - name: Build with Next.js
         run: pnpm next build
 
-      - name: Move output to 'out' directory
-        run: |
-          mkdir -p out
-          cp -r .next out/
-          cp -r public out/
-          # Adjust the above lines based on your output requirements
+      # - name: Move output to 'out' directory
+      #   run: |
+      #     mkdir -p out
+      #     cp -r .next out/
+      #     cp -r public out/
+      #     # Adjust the above lines based on your output requirements
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
