@@ -30,7 +30,7 @@ export default function page() {
                 <span className="font-semibold text-[#5046e6] mr-2">Shadcn/ui</span>
                 <span className="font-semibold text-[#5046e6] mr-2">Magic UI</span>
                 /
-                <span className="font-semibold text-[#5046e6] mr-2 ml-2">GutHub Pages Workflow(Pipeline)</span>
+                <span className="font-semibold text-[#5046e6] mr-2 ml-2">GitHub Pages Workflow(Pipeline)</span>
               </p>
             </div>
           </BoxReveal>
