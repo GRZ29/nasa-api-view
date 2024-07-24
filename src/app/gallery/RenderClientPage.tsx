@@ -8,6 +8,7 @@ import SearchGallery from './SearchGallery'
 import CardGalleryLoader from './CardGalleryLoader'
 import BoxReveal from "@/components/magicui/box-reveal";
 import BlurFade from "@/components/magicui/blur-fade";
+import LetterPullup from '@/components/magicui/letter-pullup'
 
 type Props = {}
 
@@ -55,13 +56,17 @@ export default function RenderClientPage({ }: Props) {
                         :
                         <div className='grid grid-cols-1 gap-4 w-full 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2'>
                             {
-                                data?.collection.items.map((item,idx) => {
-                                    return (
-                                        <BlurFade key={item.href} delay={idx * 0.01} inView>
-                                            <CardGallery data={item} key={item.href} />
-                                        </BlurFade>
-                                    )
-                                })
+                                data?.collection.metadata.total_hits == 0
+                                    ?
+                                    <LetterPullup words={"No results"} delay={0.05} />
+                                    :
+                                    data?.collection.items.map((item, idx) => {
+                                        return (
+                                            <BlurFade key={item.href} delay={idx * 0.01} inView>
+                                                <CardGallery data={item} key={item.href} />
+                                            </BlurFade>
+                                        )
+                                    })
                             }
                         </div>
             }
