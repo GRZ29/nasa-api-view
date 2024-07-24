@@ -1,17 +1,13 @@
 "use client"
 
-import { useApiNasaImages, useApiNasaPictureDay } from '@/hooks/nasa-api-images'
+import { useApiNasaImages } from '@/hooks/nasa-api-images'
 import React from 'react'
 import CardGallery from './CardGallery'
-import { zodResolver } from "@hookform/resolvers/zod"
-import { z } from "zod"
-import { useForm } from 'react-hook-form'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import SearchGallery from './SearchGallery'
 import CardGalleryLoader from './CardGalleryLoader'
+import BoxReveal from "@/components/magicui/box-reveal";
+import BlurFade from "@/components/magicui/blur-fade";
 
 type Props = {}
 
@@ -27,12 +23,8 @@ export default function RenderClientPage({ }: Props) {
 
     const data = React.useMemo(() => nasaImages || undefined, [nasaImages])
 
-    // if (isLoading) {
-    //     return <div>pending</div>
-    // }
-
     if (isError) {
-        return <div>eror</div>
+        return <div>error</div>
     }
 
     return (
@@ -44,14 +36,34 @@ export default function RenderClientPage({ }: Props) {
                     <div className='grid grid-cols-1 gap-4 w-full 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2'>
                         <CardGalleryLoader />
                     </div>
-                    :
-                    <div className='grid grid-cols-1 gap-4 w-full 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2'>
-                        {
-                            data?.collection.items.map(item => {
-                                return <CardGallery data={item} key={item.href} />
-                            })
-                        }
-                    </div>
+                    : !data?.collection
+                        ?
+                        <div className="h-full w-full items-center justify-center overflow-hidden pt-8">
+                            <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+                                <p className="text-[3.5rem] font-semibold aaa">
+                                    Nasa Gallery
+                                </p>
+                            </BoxReveal>
+
+                            <BoxReveal boxColor={"#5046e6"} duration={0.5}>
+                                <h2 className="mt-[.5rem] text-[1rem]">
+                                    You only need to search a keyword to see if the api have something related to your keyword
+                                </h2>
+                            </BoxReveal>
+
+                        </div>
+                        :
+                        <div className='grid grid-cols-1 gap-4 w-full 2xl:grid-cols-4 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2'>
+                            {
+                                data?.collection.items.map((item,idx) => {
+                                    return (
+                                        <BlurFade key={item.href} delay={idx * 0.01} inView>
+                                            <CardGallery data={item} key={item.href} />
+                                        </BlurFade>
+                                    )
+                                })
+                            }
+                        </div>
             }
         </>
     )

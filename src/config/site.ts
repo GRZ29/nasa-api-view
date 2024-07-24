@@ -1,9 +1,9 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "Nasa API Explorer",
   description:
-    "Beautifully designed components that you can copy and paste into your apps. Accessible. Customizable. Open Source.",
+    "This front-end project was developed to create an interactive user interface for exploring images and data provided by NASA`s public API. I utilized the following technologies for its implementation: Technologies Used NextJSTanStack QueryTypescriptTailwind CSSShadcn/uiMagic UI/GutHub Pages Workflow(Pipeline)",
   mainNav: [
     {
       title: "Home",

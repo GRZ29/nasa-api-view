@@ -26,19 +26,18 @@ export default function ShowDetailsCard({ data, open, onOpenChange }: Props) {
             <SheetContent className="!max-w-full w-full md:w-9/12 lg:w-9/12 xl:w-9/12 2xl:w-9/12 overflow-y-auto" aria-describedby={undefined}>
                 <SheetHeader>
                     <SheetTitle className="flex"><label className="text-3xl font-extrabold leading-tight tracking-tighter md:text-4xl">{item.title}</label> </SheetTitle>
-                    <Badge className="absolute left-6 top-16">{new Date(item.date_created).toDateString()}</Badge>
-
-                    <div className="flex flex-col lg:flex-row pt-16">
+                    <div className="flex flex-col lg:flex-row pt-8">
                         <div className="relative w-full min-h-[300px] max-w-[700px] mb-10 md:min-h-[500px] lg:min-h-[500px] xl:min-h-[500px] 2xl:min-h-[500px] max-h-[600px] aaa">
                             <Image
                                 src={data.links[0].href}
                                 alt={`${data.data[0].title}`}
                                 fill
-                                className='rounded-t bbb'
+                                className='rounded-t bbb object-contain'
                                 quality={100}
                             />
                         </div>
                         <div className="lg:ml-6 text-left">
+                            <Badge className="mb-4">{new Date(item.date_created).toDateString()}</Badge><br/>
                             Center: <Badge className="mb-4">{item.center}</Badge>
                             <br />
                             Nasa ID: <Badge className="mb-4">{item.nasa_id}</Badge>
@@ -53,6 +52,5 @@ export default function ShowDetailsCard({ data, open, onOpenChange }: Props) {
                 </SheetHeader>
             </SheetContent>
         </Sheet >
-
     )
 }
